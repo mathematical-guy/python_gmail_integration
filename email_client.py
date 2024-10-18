@@ -1,5 +1,7 @@
 from base_client import GoogleClient
 
+from utils import is_client_configured_properly
+
 SCOPES = []
 
 
@@ -8,6 +10,7 @@ class EmailClient(GoogleClient):
     def __init__(self, *args, **kwargs):
         super().__init__(service_name='gmail', *args, **kwargs)
 
+    @is_client_configured_properly
     def list_emails(self):
         results = self.service.users().messages().list(userId='me', labelIds=['INBOX'], maxResults=10).execute()
         messages = results.get('messages', [])
