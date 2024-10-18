@@ -9,7 +9,7 @@ def is_client_configured_properly(func):
         if self.creds is None:
             raise Exception('Credentials are not configured properly')
 
+        print(f"Client {str(self)} configured properly, executing {str(func)}")
         func(self, *args, **kwargs)
-        print(f"Client {str(self)} configured properly")
 
     return inner
