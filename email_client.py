@@ -1,9 +1,9 @@
+from email.utils import parsedate_to_datetime
+
 from base_client import GoogleClient
 
 from utils import is_client_configured_properly
 from database import DatabaseClient
-
-SCOPES = []
 
 
 class EmailClient(GoogleClient):
@@ -28,11 +28,11 @@ class EmailClient(GoogleClient):
             if header_name == 'Subject':
                 subject = header_value
 
-            elif header_name == 'FROM':
-                sender = header_value
+            elif header_name == 'From':
+                sender = header_value.split('<')[-1][:-1]
 
             elif header_name == 'Date':
-                date_received = header_value
+                date_received = parsedate_to_datetime(data=header_value).strftime('%Y-%m-%d %H:%M:%S')
 
         return {
             "email_id": email_id, "snippet": snippet, "date_received": date_received,
@@ -46,15 +46,15 @@ class EmailClient(GoogleClient):
 
         if not messages:
             print("No messages found.")
+            return
 
-        else:
-            database = DatabaseClient()
-            print("Messages:")
-            for message in messages:
-                msg = self.service.users().messages().get(userId='me', id=message['id']).execute()
-                print(f"Message snippet: {msg['snippet']}")
-                email = self.__parse_email(message=msg)
-                database.insert_email_into_database(email=email)
+        database = DatabaseClient()
+        print("Messages:")
+        for message in messages:
+            msg = self.service.users().messages().get(userId='me', id=message['id']).execute()
+            print(f"Message snippet: {msg['snippet']}")
+            email = self.__parse_email(message=msg)
+            database.insert_email_into_database(email=email)
 
 
 if __name__ == '__main__':
