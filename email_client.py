@@ -40,8 +40,8 @@ class EmailClient(GoogleClient):
         }
 
     @is_client_configured_properly
-    def list_emails(self):
-        results = self.service.users().messages().list(userId='me', labelIds=['INBOX'], maxResults=10).execute()
+    def list_emails(self, max_emails=10):
+        results = self.service.users().messages().list(userId='me', labelIds=['INBOX'], maxResults=max_emails).execute()
         messages = results.get('messages', [])
 
         if not messages:
