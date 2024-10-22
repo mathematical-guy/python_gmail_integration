@@ -42,4 +42,3 @@ class DatabaseClient:
 
         except Exception as e:
             print(f"Error {str(e)} occurred while inserting email {snippet}")
-
