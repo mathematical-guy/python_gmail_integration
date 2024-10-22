@@ -9,7 +9,8 @@ from database import DatabaseClient
 class EmailClient(GoogleClient):
     """ Google Client restricted to Email Service only """
     def __init__(self, *args, **kwargs):
-        super().__init__(service_name='gmail', *args, **kwargs)
+        scopes = ['https://www.googleapis.com/auth/gmail.readonly']
+        super().__init__(service_name='gmail', scopes=scopes, *args, **kwargs)
 
     def __parse_email(self, message: dict):
         subject = "No Subject"
