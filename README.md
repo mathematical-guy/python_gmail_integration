@@ -2,6 +2,8 @@
 
 This project demonstrates how to authenticate with Google's Gmail API using OAuth, fetch emails from your inbox, store them in an SQLite database, and apply dynamic filters based on user input. The filters are defined in a JSON file, and the user can apply multiple rules with AND/OR operators.
 
+
+
 ## Features
 - Authenticate with the Gmail API using OAuth 2.0
 - Fetch a list of emails from Gmail
@@ -9,6 +11,10 @@ This project demonstrates how to authenticate with Google's Gmail API using OAut
 - Apply multiple filter rules (conditions) using dynamic SQL queries
 - Support for AND/OR operators between rules 
 - Rules and filters stored in a JSON file for flexibility
+
+
+
+https://github.com/user-attachments/assets/fc94dcd0-b9f2-40ce-aeb1-b09020aebe5e
 
 
 
