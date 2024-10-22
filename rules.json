@@ -1,0 +1,57 @@
+{
+  "rules": [
+    {
+      "rule_id": 1,
+      "description": "Filter emails received between specific dates",
+      "query": "DATE(date_received) BETWEEN '{from}' AND '{to}'"
+    },
+    {
+      "rule_id": 2,
+      "description": "Filter emails received between specific times",
+      "query": "TIME(date_received) BETWEEN '{from}' AND '{to}'"
+    },
+
+
+    {
+      "rule_id": 3,
+      "description": "Filter emails before a specific date",
+      "query": "DATE(date_received) < '{value}'"
+    },
+    {
+      "rule_id": 4,
+      "description": "Filter emails after a specific date",
+      "query": "DATE(date_received) > '{value}'"
+    },
+
+
+    {
+      "rule_id": 5,
+      "description": "Filter emails before a specific time",
+      "query": "TIME(date_received) < '{value}'"
+    },
+    {
+      "rule_id": 6,
+      "description": "Filter emails after a specific time",
+      "query": "TIME(date_received) > '{value}'"
+    },
+
+
+    {
+      "rule_id": 7,
+      "description": "Filter emails from a specific sender",
+      "query": "sender='{value}'"
+    },
+    {
+      "rule_id": 8,
+      "description": "Filter emails from a sender name contains",
+      "query": "sender LIKE '%{value}%'"
+    },
+
+
+    {
+      "rule_id": 9,
+      "description": "Filter emails from a contains subject",
+      "query": "snippet LIKE '%{value}%'"
+    }
+  ]
+}
